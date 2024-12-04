@@ -1,5 +1,5 @@
 This is a demo project for Ben Burbank at American Airlines to show I can program
-in Terraform. My plan is to use an AWS VPC in the us-east-1 region and to create
+in Terraform. My plan is to use an AWS VPC in the us-east-2 region and to create
 two sub-nets, one public and one private. The public one will have an instance
 running a Docker Ubuntu container with a Internet Gateway attached for outside
 access. The private one will also have an instance running for a database.
