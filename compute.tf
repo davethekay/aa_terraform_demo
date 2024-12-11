@@ -8,6 +8,7 @@ data "aws_ami" "ubuntu" {
     name = "name"
     #values = ["ubuntu/images/hvm-ssd/ubuntu-*-22.04-amd64-server-*"]
     values = ["al2023-ami-2023.6.20241111.0-kernel-6.1-x86_64"]
+    #values = ["amzn2-ami-ecs-hvm-2.0.20241120-x86_64-ebs"] # As per aws ssm command from DCT
   }
   filter {
     name   = "virtualization-type"
@@ -29,14 +30,18 @@ output "ami_instance" {
 }
 
 #Create a Linux instance using the subnet_public_aa subnet
-# resource "aws_instance" "instance_public_aa" {
-#   ami           = data.aws_ami.ubuntu.image_id
-#   instance_type = "t2.micro"
-#   subnet_id     = aws_subnet.subnet_public_aa.id
-#   #user_data = "AddUserDataReferenceHere"
-#   root_block_device {
-#     delete_on_termination = true
-#     volume_size           = 10
-#     volume_type           = "gp3"
-#   }
-# }
+resource "aws_instance" "instance_public_aa" {
+  ami           = data.aws_ami.ubuntu.image_id
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.subnet_public_aa.id
+  user_data     = <<EOF
+  #!/bin/bash
+  echo ECS_CLUSTER=${var.aws_cluster_name_aa} >> /etc/ecs/ecs.config
+  EOF
+  root_block_device {
+    delete_on_termination = true
+    volume_size           = 10
+    volume_type           = "gp3"
+  }
+  security_groups = [aws_security_group.aws_sg_public_22_80_aa.id]
+}

@@ -30,43 +30,44 @@ resource "aws_subnet" "subnet_public_aa" {
 }
 
 # Create a private subnet
-# resource "aws_subnet" "subnet_private_aa" {
-#   vpc_id     = aws_vpc.vpc_main_aa.id
-#   cidr_block = "10.0.1.0/24"
+resource "aws_subnet" "subnet_private_aa" {
+  vpc_id     = aws_vpc.vpc_main_aa.id
+  cidr_block = "10.0.1.0/24"
 
-#   tags = merge(local.common_tags, {
-#     vpcSubnetPrivateName = "subnet_private_aa"
-#   })
+  tags = merge(local.common_tags, {
+    vpcSubnetPrivateName = "subnet_private_aa"
+    Name = "SUBNET_PRIVATE_AA"
+  })
 
-# }
+}
 
 # Connect an Internet Gateway to this VPC
-# resource "aws_internet_gateway" "igw_aa" {
-#   vpc_id = aws_vpc.vpc_main_aa.id
+resource "aws_internet_gateway" "igw_aa" {
+  vpc_id = aws_vpc.vpc_main_aa.id
 
-#   tags = merge(local.common_tags, {
-#     internetGatewayName = "internet_gateway_aa"
-#     Name = "INTERNET_GATEWAY_PUBLIC_AA"
-#   })
-# }
+  tags = merge(local.common_tags, {
+    internetGatewayName = "internet_gateway_aa"
+    Name = "INTERNET_GATEWAY_PUBLIC_AA"
+  })
+}
 
 # Create a route table
-# resource "aws_route_table" "route_main_aa" {
-#   vpc_id = aws_vpc.vpc_main_aa.id
-#   route {
-#     cidr_block = "0.0.0.0/0"
-#     gateway_id = aws_internet_gateway.igw_aa.id
-#   }
+resource "aws_route_table" "route_main_aa" {
+  vpc_id = aws_vpc.vpc_main_aa.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw_aa.id
+  }
 
-#   tags = merge(local.common_tags, {
-#     routeTableName = "route_table_aa"
-#     Name = "ROUTE_TABLE_AA"
-#   })
-# }
+  tags = merge(local.common_tags, {
+    routeTableName = "route_table_aa"
+    Name = "ROUTE_TABLE_AA"
+  })
+}
 
 # Associate the route table for public subnet
 # We do NOT associate the private subnet to an IGW
-# resource "aws_route_table_association" "public_route_aa" {
-#   subnet_id      = aws_subnet.subnet_public_aa.id
-#   route_table_id = aws_route_table.route_main_aa.id
-# }
+resource "aws_route_table_association" "public_route_aa" {
+  subnet_id      = aws_subnet.subnet_public_aa.id
+  route_table_id = aws_route_table.route_main_aa.id
+}

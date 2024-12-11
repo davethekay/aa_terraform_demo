@@ -1,5 +1,5 @@
 resource "aws_security_group" "aws_sg_public_22_80_aa" {
-  name        = "aws_sg_public_http_ssh_aa"
+  name        = "aws_sg_public_ssh_http_aa"
   description = "Security group for using ports 80 and 22"
   vpc_id      = aws_vpc.vpc_main_aa.id
   ingress {
@@ -24,5 +24,5 @@ resource "aws_security_group" "aws_sg_public_22_80_aa" {
   }
 
   tags = merge(local.common_tags, {
-  Name = "aws_sg_public_22_80_aa" })
+  Name = "AWS_SG_PUBLIC_SSH_HTTP_AA" })
 }
