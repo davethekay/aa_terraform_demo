@@ -36,7 +36,7 @@ resource "aws_subnet" "subnet_private_aa" {
 
   tags = merge(local.common_tags, {
     vpcSubnetPrivateName = "subnet_private_aa"
-    Name = "SUBNET_PRIVATE_AA"
+    Name                 = "SUBNET_PRIVATE_AA"
   })
 
 }
@@ -47,7 +47,7 @@ resource "aws_internet_gateway" "igw_aa" {
 
   tags = merge(local.common_tags, {
     internetGatewayName = "internet_gateway_aa"
-    Name = "INTERNET_GATEWAY_PUBLIC_AA"
+    Name                = "INTERNET_GATEWAY_PUBLIC_AA"
   })
 }
 
@@ -61,7 +61,7 @@ resource "aws_route_table" "route_main_aa" {
 
   tags = merge(local.common_tags, {
     routeTableName = "route_table_aa"
-    Name = "ROUTE_TABLE_AA"
+    Name           = "ROUTE_TABLE_AA"
   })
 }
 

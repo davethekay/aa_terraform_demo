@@ -14,6 +14,6 @@ resource "aws_ecs_cluster" "aws_ecs_cluster_aa" {
   name = "aws_ecs_cluster_aa"
 
   tags = merge(local.common_tags, {
-    Name  = "AWS_CLUSTER_AA"
+    Name = "AWS_CLUSTER_AA"
   })
 }
