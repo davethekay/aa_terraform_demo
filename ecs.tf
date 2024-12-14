@@ -9,11 +9,12 @@
 #       })
 # }
 
-# Define a cluster
-resource "aws_ecs_cluster" "aws_ecs_cluster_aa" {
-  name = "aws_ecs_cluster_aa"
+# Define a cluster - NOTE ECS IS NOT ACCEPTING MY EXTERNAL EC2 INSTANCE!! This is because
+# DCT is not correct in it's HOL and I cannot move further.
+# resource "aws_ecs_cluster" "aws_ecs_cluster_aa" {
+#   name = "aws_ecs_cluster_aa"
 
-  tags = merge(local.common_tags, {
-    Name = "AWS_CLUSTER_AA"
-  })
-}
+#   tags = merge(local.common_tags, {
+#     Name = "AWS_CLUSTER_AA"
+#   })
+# }
