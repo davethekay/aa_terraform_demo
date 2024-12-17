@@ -30,16 +30,16 @@ resource "aws_subnet" "subnet_public_aa" {
 }
 
 # Create a private subnet
-resource "aws_subnet" "subnet_private_aa" {
-  vpc_id     = aws_vpc.vpc_main_aa.id
-  cidr_block = "10.0.1.0/24"
+# resource "aws_subnet" "subnet_private_aa" {
+#   vpc_id     = aws_vpc.vpc_main_aa.id
+#   cidr_block = "10.0.1.0/24"
 
-  tags = merge(local.common_tags, {
-    vpcSubnetPrivateName = "subnet_private_aa"
-    Name                 = "SUBNET_PRIVATE_AA"
-  })
+#   tags = merge(local.common_tags, {
+#     vpcSubnetPrivateName = "subnet_private_aa"
+#     Name                 = "SUBNET_PRIVATE_AA"
+#   })
 
-}
+#}
 
 # Connect an Internet Gateway to this VPC
 resource "aws_internet_gateway" "igw_aa" {

@@ -1,3 +1,3 @@
-# resource "aws_instance" "aws_ec2_optomized_ecs_aa" {
-#   ami = ami-0607c90293527de0e # Optimized with ECS as per the following command
+# resource "aws_instance" "aws_ec2_aa" {
+#   ami = ami-0942ecd5d85baa812
 # }
