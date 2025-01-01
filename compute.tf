@@ -28,11 +28,11 @@ output "ami_instance" {
   EOF
 }
 
-# Create a Linux instance using the subnet_public_aa subnet
+# Create a standard Linux instance using the subnet_public_aa subnet
 resource "aws_instance" "instance_public_aa" {
-  ami             = "ami-0607c90293527de0e" #data.aws_ami.ubuntu.image_id
+  ami             = data.aws_ami.ubuntu.image_id
   instance_type   = "t2.micro"
-  key_name        = "ECS-PEM-KEY-PAIR" #STILL NOT ALLOWING ACCESS TO PORT 22!!!!!
+  key_name        = "ECS-PEM-KEY-PAIR"
   subnet_id       = aws_subnet.subnet_public_aa.id
   security_groups = [aws_security_group.aws_sg_public_22_80_443_aa.id]
 }
