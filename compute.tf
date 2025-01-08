@@ -9,8 +9,8 @@ data "aws_ami" "ubuntu" {
   filter {
     name = "name"
     #values = ["ubuntu/images/hvm-ssd/ubuntu-*-22.04-amd64-server-*"]
-    values = ["al2023-ami-2023.6.20241111.0-kernel-6.1-x86_64"]
-    #values = ["amzn2-ami-ecs-hvm-2.0.20241120-x86_64-ebs"] # As per aws ssm command from DCT
+    #values = ["al2023-ami-2023.6.20241111.0-kernel-6.1-x86_64"]
+    values = ["amzn2-ami-ecs-hvm-2.0.20241120-x86_64-ebs"] # As per aws ssm command from DCT
   }
   filter {
     name   = "virtualization-type"

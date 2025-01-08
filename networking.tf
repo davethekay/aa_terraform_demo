@@ -64,7 +64,7 @@ resource "aws_route_table" "route_main_public_aa" {
   })
 }
 
-# Create a route table for the private subnet
+# # Create a route table for the private subnet
 # resource "aws_route_table" "route_main_private_aa" {
 #   vpc_id = aws_vpc.vpc_main_aa.id
 # }
@@ -75,9 +75,9 @@ resource "aws_route_table" "route_main_public_aa" {
 #   destination_cidr_block    = "10.0.2.0/24"
 # }
 
-# Associate the route table for public subnet
-# We do NOT associate the private subnet to an IGW
-resource "aws_route_table_association" "public_route_aa" {
-  subnet_id      = aws_subnet.subnet_public_aa.id
-  route_table_id = aws_route_table.route_main_public_aa.id
-}
+# # Associate the route table for public subnet
+# # We do NOT associate the private subnet to an IGW
+# resource "aws_route_table_association" "public_route_aa" {
+#   subnet_id      = aws_subnet.subnet_public_aa.id
+#   route_table_id = aws_route_table.route_main_public_aa.id
+# }
