@@ -1,16 +1,11 @@
 # Data block for choosing an AMI instance from Amazon
 data "aws_ami" "ubuntu" {
   most_recent = true
-  #owners      = ["137112412989"] # Owner is Canonical
-  #provider = "xx-xxxx-x"
-
-  # Look for an ECS Optimized Amazon instance for ECS. The instance looked for was found
-  # by using an aws ssm command to locate an AMI
+  owners      = ["137112412989"] # Owner is Canonical
+  
   filter {
-    name = "name"
-    #values = ["ubuntu/images/hvm-ssd/ubuntu-*-22.04-amd64-server-*"]
-    #values = ["al2023-ami-2023.6.20241111.0-kernel-6.1-x86_64"]
-    values = ["amzn2-ami-ecs-hvm-2.0.20241120-x86_64-ebs"] # As per aws ssm command from DCT
+    name   = "name"
+    values = ["al2023-ami-2023.6.20241111.0-kernel-6.1-x86_64"]
   }
   filter {
     name   = "virtualization-type"
